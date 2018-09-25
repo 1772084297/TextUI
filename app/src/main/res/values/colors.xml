@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#fff</color>
+
+    <color name="newsbg">#02548e</color>
+    <color name="perbg">#33b5e6</color>
+    <color name="numColor">#afafaf</color>
+    <color name="pink">#ff8197</color>
+    <color name="blue">#85caf0</color>
+    <color name="grey">#607D8B</color>
+    <color name="orange">#F57C00</color>
+    <color name="black">#000</color>
+    <color name="white">#ffffff</color>
+    <color name="textColor">#7d8995</color>
+    <color name="textThickeningColor">#586069</color>
+    <color name="red">#f32e2e</color>
+    <color name="light_red">#ffd7a1a1</color>
+    <color name="bac">#e6e6e6</color>
+    <color name="yellow">#ffd000</color>
+    <color name="line">#5e5e5e</color>
+    <color name="cardBac">#fafafa</color>
+
+    <color name="classColor">#1fbbd2</color>
+
+    <!--fanLayoutManager中使用 那么多颜色改的时候删除就行了-->
+    <color name="dark_cerulean">#134785</color>
+    <color name="dodger_blue">#249ff4</color>
+    <color name="mantis">#55b859</color>
+    <color name="dim_gray">#6f6f6f</color>
+    <color name="manatee">#979797</color>
+    <color name="dark_orchid">#a62ab9</color>
+    <color name="timberwolf">#d8d8d8</color>
+    <color name="portland_orange">#fc5f23</color>
+    <color name="usc_gold">#fec804</color>
+
+</resources>

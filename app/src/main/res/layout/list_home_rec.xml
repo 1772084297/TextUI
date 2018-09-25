@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <lyxh.sdnu.com.testui.view.CardSolutionView
+        android:id="@+id/list_item_cardSolutionView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <lyxh.sdnu.com.testui.view.SexView
+        android:id="@+id/list_item_sexView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <lyxh.sdnu.com.testui.view.StraightStuView
+        android:id="@+id/list_item_straightStuView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <lyxh.sdnu.com.testui.view.NumStuView
+        android:id="@+id/list_item_numStuView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <lyxh.sdnu.com.testui.view.AchievementStuView
+        android:id="@+id/list_item_achievementStuView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <lyxh.sdnu.com.testui.view.CommonlyUrlView
+        android:id="@+id/list_item_commonlyUrlView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

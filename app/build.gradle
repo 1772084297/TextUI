@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        ndk{abiFilters "armeabi"}
+        applicationId "lyxh.sdnu.com.testui"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:1.2.0'
+    implementation 'com.android.support:design:28.0.0-rc02'
+    api 'com.android.support:cardview-v7:28.0.0-rc02'
+    implementation 'com.android.support:support-v4:28.0.0-rc02'
+    api 'de.hdodenhof:circleimageview:2.2.0'
+    //glide图片加载库
+    api 'com.github.bumptech.glide:glide:3.7.0'
+    //glide图片变换库
+    api 'jp.wasabeef:glide-transformations:2.0.1'
+    //fragment的回退事件
+    implementation 'com.github.ikidou:FragmentBackHandler:2.1'
+    //炫酷的fanLayoutManager 以另一种形式展示recyclerView
+    implementation 'com.cleveroad:fan-layout-manager:1.0.5'
+    //炫酷的MPAndroidChart 各种图表
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    //Nicespinner 炫酷的刷新框架
+    implementation 'com.github.arcadefire:nice-spinner:1.3.4'
+    //hellocharts
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.2'
+    //智能刷新
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4'
+    //okhttp
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    //七牛库
+    api('com.qiniu:qiniu-android-sdk:7.3.11')
+    api 'com.qiniu:happy-dns:0.2.13'
+//    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.okio:okio:1.14.0'
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.7'
+    implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1310_43612_sharewithdownload_withoutGame_obfs_20180706_163319.jar')
+    implementation project(path: ':libs')
+}
