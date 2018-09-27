@@ -2,8 +2,6 @@ package lyxh.sdnu.com.testui.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,9 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import lyxh.sdnu.com.testui.Activity.MainActivity;
-import lyxh.sdnu.com.testui.ImgUtils;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
+import lyxh.sdnu.com.testui.Utils.ImgUtils;
+import lyxh.sdnu.com.testui.Utils.Utils;
 import lyxh.sdnu.com.testui.fragment.StraightStuFragment;
 
 //学霸

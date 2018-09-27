@@ -7,17 +7,9 @@ import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.qiniu.android.utils.Json;
 import com.tencent.smtt.sdk.QbSdk;
 
-import lyxh.sdnu.com.testui.BaseApplication;
-import lyxh.sdnu.com.testui.Bean;
-import lyxh.sdnu.com.testui.NetClient;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Utils.NetClient;
 import lyxh.sdnu.com.testui.R;
 
 public class SplashActivity extends BaseActivity {

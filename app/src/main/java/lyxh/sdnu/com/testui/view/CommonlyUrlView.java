@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import lyxh.sdnu.com.testui.Activity.DetailedActivity;
 import lyxh.sdnu.com.testui.Activity.MainActivity;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 
 public class CommonlyUrlView extends LinearLayout {

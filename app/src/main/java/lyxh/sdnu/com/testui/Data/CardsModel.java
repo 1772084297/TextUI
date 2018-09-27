@@ -1,4 +1,4 @@
-package lyxh.sdnu.com.testui;
+package lyxh.sdnu.com.testui.Data;
 
 public class CardsModel {
     //姓名 学号 排名 头像 学院 班级

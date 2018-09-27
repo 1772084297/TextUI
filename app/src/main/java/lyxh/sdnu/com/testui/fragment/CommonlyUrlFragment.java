@@ -15,7 +15,7 @@ import java.util.List;
 
 import lyxh.sdnu.com.testui.Adapter.CommonlyUrlAdapter;
 import lyxh.sdnu.com.testui.R;
-import lyxh.sdnu.com.testui.WebMap;
+import lyxh.sdnu.com.testui.Data.WebMap;
 
 public class CommonlyUrlFragment extends Fragment{
     private RecyclerView recyclerView;

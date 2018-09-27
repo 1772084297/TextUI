@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lyxh.sdnu.com.testui.Adapter.Adapter_card;
-import lyxh.sdnu.com.testui.CardsModel;
-import lyxh.sdnu.com.testui.ImgUtils;
+import lyxh.sdnu.com.testui.Data.CardsModel;
 import lyxh.sdnu.com.testui.R;
-import lyxh.sdnu.com.testui.Utils;
+import lyxh.sdnu.com.testui.Utils.ImgUtils;
+import lyxh.sdnu.com.testui.Utils.Utils;
 
 //扇形页面展示
 public class StraightStuFragment extends DialogFragment {

@@ -27,7 +27,6 @@ import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ViewPortHandler;
-import com.qiniu.android.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,9 +36,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import lyxh.sdnu.com.testui.NetClient;
+import lyxh.sdnu.com.testui.Utils.NetClient;
 import lyxh.sdnu.com.testui.R;
-import lyxh.sdnu.com.testui.Utils;
+import lyxh.sdnu.com.testui.Utils.Utils;
 
 public class CardSolutionFragment extends Fragment {
 

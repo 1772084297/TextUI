@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import lyxh.sdnu.com.testui.AchievementInfo;
-import lyxh.sdnu.com.testui.ImgUtils;
+import lyxh.sdnu.com.testui.Data.AchievementInfo;
 import lyxh.sdnu.com.testui.R;
+import lyxh.sdnu.com.testui.Utils.ImgUtils;
 
-public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.AchievementHolder>{
+public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.AchievementHolder> {
     private Context context;
     private List<AchievementInfo> lists;
 
@@ -23,24 +23,27 @@ public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.
         this.context = context;
         this.lists = lists;
     }
+
     @NonNull
     @Override
     public AchievementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(context).inflate(R.layout.item_achievement_stu,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_achievement_stu, parent, false);
         return new AchievementHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull AchievementHolder holder, int position) {
         holder.title.setText(lists.get(position).getCourseName());
         holder.score.setText(lists.get(position).getScore());
         //todo 需要根据成绩多少来进行判定牌子
-        if (lists.get(position).getScoreInt() >=90)
+        if (lists.get(position).getScoreInt() >= 90)
             ImgUtils.load(context, R.drawable.ic_gold, holder.status);
-        else if (lists.get(position).getScoreInt()>60&&lists.get(position).getScoreInt()<90)
+        else if (lists.get(position).getScoreInt() > 60 && lists.get(position).getScoreInt() < 90)
             ImgUtils.load(context, R.drawable.ic_silver, holder.status);
         else
             ImgUtils.load(context, R.drawable.ic_copper, holder.status);
     }
+
     @Override
     public int getItemCount() {
         return lists.size();
@@ -50,11 +53,12 @@ public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.
         private TextView title;
         private TextView score;
         private ImageView status;
+
         AchievementHolder(View itemView) {
             super(itemView);
-            title=itemView.findViewById(R.id.item_achievementStuView_title);
-            score=itemView.findViewById(R.id.item_achievementStuView_score);
-            status=itemView.findViewById(R.id.item_achievementStuView_status);
+            title = itemView.findViewById(R.id.item_achievementStuView_title);
+            score = itemView.findViewById(R.id.item_achievementStuView_score);
+            status = itemView.findViewById(R.id.item_achievementStuView_status);
         }
     }
 }

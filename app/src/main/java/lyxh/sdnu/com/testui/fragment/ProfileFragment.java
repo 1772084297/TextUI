@@ -37,7 +37,7 @@ import java.net.URL;
 import lyxh.sdnu.com.testui.Activity.LoginActivity;
 import lyxh.sdnu.com.testui.Activity.MainActivity;
 import lyxh.sdnu.com.testui.BaseApplication;
-import lyxh.sdnu.com.testui.PicChooserHelper;
+import lyxh.sdnu.com.testui.Utils.PicChooserHelper;
 import lyxh.sdnu.com.testui.R;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;

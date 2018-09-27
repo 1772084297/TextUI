@@ -14,9 +14,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import lyxh.sdnu.com.testui.ImgUtils;
 import lyxh.sdnu.com.testui.R;
-import lyxh.sdnu.com.testui.WebMap;
+import lyxh.sdnu.com.testui.Data.WebMap;
+import lyxh.sdnu.com.testui.Utils.ImgUtils;
 
 public class CommonlyUrlAdapter extends RecyclerView.Adapter<CommonlyUrlAdapter.CommonlyUrlHolder>{
     private Context context;

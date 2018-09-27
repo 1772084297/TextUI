@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -24,10 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
-import lyxh.sdnu.com.testui.Activity.LoginActivity;
 import lyxh.sdnu.com.testui.Activity.MainActivity;
 import lyxh.sdnu.com.testui.Adapter.HomeRecAdapter;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 
 public class HomeFragment extends Fragment {

@@ -1,6 +1,8 @@
-package lyxh.sdnu.com.testui;
+package lyxh.sdnu.com.testui.Data;
 
 import java.util.List;
+
+import lyxh.sdnu.com.testui.Data.AchievementInfo;
 
 public class ProfileList {
     public static final int VIEW_CARD_SOLUTION=0;

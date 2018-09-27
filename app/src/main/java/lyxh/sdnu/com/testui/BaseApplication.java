@@ -3,6 +3,9 @@ package lyxh.sdnu.com.testui;
 import android.app.Application;
 import android.content.Context;
 
+import lyxh.sdnu.com.testui.Data.ProfileList;
+import lyxh.sdnu.com.testui.Utils.QnUploadHelper;
+
 public class BaseApplication extends Application {
 
     private static BaseApplication app;

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.holder.AnimateViewHolder;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 import lyxh.sdnu.com.testui.view.CommonlyUrlView;
 import lyxh.sdnu.com.testui.view.SexView;

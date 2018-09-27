@@ -15,9 +15,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import lyxh.sdnu.com.testui.CardsModel;
-import lyxh.sdnu.com.testui.ImgUtils;
+import lyxh.sdnu.com.testui.Data.CardsModel;
 import lyxh.sdnu.com.testui.R;
+import lyxh.sdnu.com.testui.Utils.ImgUtils;
 
 //学霸指数界面的适配器
 public class Adapter_card extends RecyclerView.Adapter<Adapter_card.ViewHolder> {

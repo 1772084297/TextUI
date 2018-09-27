@@ -1,4 +1,4 @@
-package lyxh.sdnu.com.testui;
+package lyxh.sdnu.com.testui.Utils;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,6 +20,8 @@ import com.qiniu.android.http.ResponseInfo;
 import java.io.File;
 import java.io.IOException;
 
+import lyxh.sdnu.com.testui.BaseApplication;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.dialog.PicChooseDialog;
 
 

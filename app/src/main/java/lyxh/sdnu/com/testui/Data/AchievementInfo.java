@@ -1,4 +1,4 @@
-package lyxh.sdnu.com.testui;
+package lyxh.sdnu.com.testui.Data;
 
 public class AchievementInfo {
     private String StudentNum;

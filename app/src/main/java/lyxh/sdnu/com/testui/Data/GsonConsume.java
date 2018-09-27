@@ -1,4 +1,4 @@
-package lyxh.sdnu.com.testui;
+package lyxh.sdnu.com.testui.Data;
 
 //[{"StudentNum":"201611010218","StudentName":"王栋","CardId":"55151","Date":null,"Bb":2.3,"Hb":9.5,"Fb":7.8},{"StudentNum":"201611010218","StudentName":"王栋","CardId":"55151","Date":null,"Bb":2.2,"Hb":7.8,"Fb":10.0},{"StudentNum":"201611010218","StudentName":"王栋","CardId":"55151","Date":null,"Bb":3.5,"Hb":6.8,"Fb":9.0},{"StudentNum":"201611010218","StudentName":"王栋","CardId":"55151","Date":null,"Bb":2.0,"Hb":8.0,"Fb":6.5},{"StudentNum":"201611010218","StudentName":"王栋","CardId":"55151","Date":null,"Bb":3.0,"Hb":5.0,"Fb":4.8}]
 public class GsonConsume {

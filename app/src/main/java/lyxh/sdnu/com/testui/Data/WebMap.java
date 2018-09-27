@@ -1,4 +1,4 @@
-package lyxh.sdnu.com.testui;
+package lyxh.sdnu.com.testui.Data;
 
 public class WebMap {
     private String name;

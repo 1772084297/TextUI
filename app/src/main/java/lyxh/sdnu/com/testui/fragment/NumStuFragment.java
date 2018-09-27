@@ -34,10 +34,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lyxh.sdnu.com.testui.GsonStuNum;
-import lyxh.sdnu.com.testui.NetClient;
+import lyxh.sdnu.com.testui.Data.GsonStuNum;
+import lyxh.sdnu.com.testui.Utils.NetClient;
 import lyxh.sdnu.com.testui.R;
-import lyxh.sdnu.com.testui.Utils;
+import lyxh.sdnu.com.testui.Utils.Utils;
 
 public class NumStuFragment extends Fragment {
 

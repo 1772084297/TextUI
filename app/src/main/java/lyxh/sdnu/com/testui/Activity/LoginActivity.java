@@ -24,15 +24,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-import lyxh.sdnu.com.testui.BaseApplication;
-import lyxh.sdnu.com.testui.Bean;
-import lyxh.sdnu.com.testui.NetClient;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.LoginBean;
+import lyxh.sdnu.com.testui.Data.ProfileList;
+import lyxh.sdnu.com.testui.Utils.NetClient;
 import lyxh.sdnu.com.testui.R;
+import lyxh.sdnu.com.testui.fragment.ProfileFragment;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,6 +49,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setStatusBar();
+        initView();
+    }
+
+    private void setStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -61,11 +64,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-        instance = this;
-        initView();
     }
 
     private void initView() {
+        instance = this;
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
         btGo = findViewById(R.id.bt_go);
@@ -118,8 +120,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        etUsername.setText("201611010218");
-        etPassword.setText("0218");
+        etUsername.setText("201611010530");
+        etPassword.setText("0530");
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -151,8 +153,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                new Thread(new Runnable() {
 //                    @Override
 //                    public void run() {
-                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=" + etUsername.getText() + "&password=" + etPassword.getText(), callback);
-
+                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=201611010530&password=0530", callback);
 //                    }
 //                }).start();
                 break;
@@ -176,8 +177,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //检查账号是否正确，正确的话跳转，并保存信息
     private void checkAccount(String result) {
-//        .substring(1,result.length()-1)
-
         if (!result.contains("Wrong account or password")) {
 //            //解析为profileList存储，保存通过账号密码申请到的信息
 ////            Gson gson = new Gson();
@@ -191,7 +190,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //            ProfileList bean = gson.fromJson(element, ProfileList.class);
 //
 //            BaseApplication.getApplication().setProfileList(bean);
-//
+            Gson gson = new Gson();
+//            ProfileList list = gson.fromJson(result, ProfileList.class);
+//            Log.e("TAGTAGTAG",list.getCardId()+"  "+list.getName());
+
+            LoginBean bean = gson.fromJson(result,LoginBean.class);
+            Log.e("TAGTAG",bean.getSchoolId()+"  "+bean.getCardId());
+
             SharedPreferences sp = getSharedPreferences("account", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.clear();

@@ -10,12 +10,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import lyxh.sdnu.com.testui.fragment.AchievementStuFragment;
 import lyxh.sdnu.com.testui.fragment.CardSolutionFragment;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 import lyxh.sdnu.com.testui.fragment.CommonlyUrlFragment;
 import lyxh.sdnu.com.testui.fragment.NumStuFragment;

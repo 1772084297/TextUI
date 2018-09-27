@@ -31,12 +31,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import lyxh.sdnu.com.testui.AchievementInfo;
+import lyxh.sdnu.com.testui.Data.AchievementInfo;
 import lyxh.sdnu.com.testui.Activity.DetailedActivity;
 import lyxh.sdnu.com.testui.Activity.MainActivity;
 import lyxh.sdnu.com.testui.Adapter.AchievementAdapter;
 import lyxh.sdnu.com.testui.BaseApplication;
-import lyxh.sdnu.com.testui.ProfileList;
+import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 
 public class AchievementStuView extends LinearLayout {
