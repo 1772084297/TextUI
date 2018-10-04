@@ -41,6 +41,15 @@ public class ProfileList {
     private String StatusNum;
     //成绩
     private List<AchievementInfo> achievementInfoList;
+    private Performance performance;
+
+    public Performance getPerformance() {
+        return performance;
+    }
+
+    public void setPerformance(Performance performance) {
+        this.performance = performance;
+    }
     //网址
 //    private String webUrl;
 

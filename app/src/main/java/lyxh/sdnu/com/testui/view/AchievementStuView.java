@@ -31,6 +31,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import lyxh.sdnu.com.testui.Activity.PerformanceAnaPreActivity;
 import lyxh.sdnu.com.testui.Data.AchievementInfo;
 import lyxh.sdnu.com.testui.Activity.DetailedActivity;
 import lyxh.sdnu.com.testui.Activity.MainActivity;
@@ -38,6 +39,7 @@ import lyxh.sdnu.com.testui.Adapter.AchievementAdapter;
 import lyxh.sdnu.com.testui.BaseApplication;
 import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
+import lyxh.sdnu.com.testui.Utils.ImgUtils;
 
 public class AchievementStuView extends LinearLayout {
     private LinearLayout linearLayout;
@@ -46,6 +48,8 @@ public class AchievementStuView extends LinearLayout {
     private ImageView imageView;
     private ProfileList profileList;
     private RecyclerView recyclerView;
+    private CardView innerCard;
+
     private AchievementAdapter achievementAdapter;
     private Button button;
     private List<AchievementInfo> lists;
@@ -70,6 +74,12 @@ public class AchievementStuView extends LinearLayout {
                 , true);
         initViews();
         setClick();
+        setStatus();
+    }
+
+    private void setStatus() {
+        //todo 根据不同的绩点来进行预测是否能够完成学业，设置三种（正常、轻微、严重）状态进行警告
+        ImgUtils.load(getContext(),R.drawable.ic_normal,imageView);
     }
 
     private void setClick() {
@@ -94,6 +104,14 @@ public class AchievementStuView extends LinearLayout {
                 Intent intent=new Intent();
                 intent.setClass(MainActivity.instance, DetailedActivity.class);
                 intent.putExtra("key",ProfileList.VIEW_ACHIEVEMENT_STU);
+                getContext().startActivity(intent);
+            }
+        });
+        innerCard.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo 跳转到绩点分析预测界面
+                Intent intent=new Intent(MainActivity.instance, PerformanceAnaPreActivity.class);
                 getContext().startActivity(intent);
             }
         });
@@ -211,13 +229,12 @@ public class AchievementStuView extends LinearLayout {
         linearLayoutHide=findViewById(R.id.view_achievement_stu_linearLayout_hide);
         button=findViewById(R.id.view_achievement_stu_btn);
         CardView outerCard=findViewById(R.id.view_achievement_stu_outer_cardView);
-        CardView innerCard=findViewById(R.id.view_achievement_stu_inner_cardView);
+        innerCard=findViewById(R.id.view_achievement_stu_inner_cardView);
 
         outerCard.setCardBackgroundColor(getResources().getColor(R.color.cardBac));
         innerCard.setCardBackgroundColor(getResources().getColor(R.color.cardBac));
 
         lists=new ArrayList<>();
-
 //        textScore.setText(profileList.getScore());
 //        ImgUtils.load(getContext(),R.drawable.ic_gold,imageView);
     }

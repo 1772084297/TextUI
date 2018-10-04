@@ -80,7 +80,7 @@ public class CardSolutionView extends LinearLayout {
         innerCard.setCardBackgroundColor(getResources().getColor(R.color.bac));
         outerCard.setCardBackgroundColor(getResources().getColor(R.color.cardBac));
 
-        ImgUtils.loadRound(getContext(), R.drawable.ic_ava, imageAva);//todo load ava
+        ImgUtils.loadRound(getContext(), R.mipmap.default_avatar_img, imageAva);//todo load ava
         ImgUtils.load(getContext(), R.drawable.card_normal, cardStatus); //todo load card_status
 
     }

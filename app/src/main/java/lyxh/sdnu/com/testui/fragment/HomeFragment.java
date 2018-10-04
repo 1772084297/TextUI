@@ -70,9 +70,9 @@ public class HomeFragment extends Fragment {
     private void initData() {
         lists=new ArrayList<>();
         lists.add(new ProfileList(0));
+        lists.add(new ProfileList(3));
         lists.add(new ProfileList(1));
         lists.add(new ProfileList(2));
-        lists.add(new ProfileList(3));
         lists.add(new ProfileList(4));
         lists.add(new ProfileList(5));
     }
