@@ -116,7 +116,7 @@ public class CardSolutionFragment extends Fragment {
             @Override
             public void run() {
                 for (int i = 0; i < 7; i++) {
-                    barXValues.add(i + "天前");
+                    barXValues.add((i+1)+ "天前");
                 }
 
                 barYValues1.add(3f);barYValues1.add(3.5f);barYValues1.add(0f);barYValues1.add(4f);

@@ -8,12 +8,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
@@ -24,26 +21,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
-import lyxh.sdnu.com.testui.Data.LoginBean;
 import lyxh.sdnu.com.testui.Data.ProfileList;
-import lyxh.sdnu.com.testui.Utils.NetClient;
 import lyxh.sdnu.com.testui.R;
-import lyxh.sdnu.com.testui.fragment.ProfileFragment;
+import lyxh.sdnu.com.testui.Utils.NetClient;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
-
-    EditText etUsername;
-    EditText etPassword;
-    Button btGo;
     public static LoginActivity instance;
-    CardView cv;
-    FloatingActionButton fab;
-    TextInputLayout usrInputLayout;
-    TextInputLayout psdInputLayout;
-
+    private EditText etUsername;
+    private EditText etPassword;
+    private Button btGo;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,54 +60,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword = findViewById(R.id.et_password);
         btGo = findViewById(R.id.bt_go);
         btGo.setOnClickListener(this);
-        cv = findViewById(R.id.cv);
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
-        usrInputLayout = findViewById(R.id.usrInputLayout);
-        etUsername.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence == null || charSequence.length() == 0) {
-                    usrInputLayout.setErrorEnabled(true);
-                    Toast.makeText(LoginActivity.this, "账号不能为空", Toast.LENGTH_LONG).show();
-                } else {
-                    usrInputLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        psdInputLayout = findViewById(R.id.psdInputLayout);
-        etPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence == null || charSequence.length() == 0) {
-                    psdInputLayout.setErrorEnabled(true);
-                    Toast.makeText(LoginActivity.this, "密码不能为空", Toast.LENGTH_LONG).show();
-                } else {
-                    psdInputLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
+        //在输入框中提示测试账号
         etUsername.setText("201611010530");
         etPassword.setText("0530");
     }
@@ -129,7 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fab:
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     getWindow().setExitTransition(null);
                     getWindow().setEnterTransition(null);
@@ -145,19 +89,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(LoginActivity.this, "账号不能为空", Toast.LENGTH_LONG).show();
                     break;
                 }
-
                 if (etPassword.getText() == null || etPassword.getText().length() == 0) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_LONG).show();
                     break;
                 }
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=201611010530&password=0530", callback);
-//                    }
-//                }).start();
+                //登陆请求
+                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id="+
+                        etUsername.getText()+"&password="+etPassword.getText(), callback);
                 break;
-
         }
     }
 
@@ -165,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private NetClient.MyCallBack callback = new NetClient.MyCallBack() {
         @Override
         public void onSuccess(String result) {
-//        判断账号密码是否正确 正确的话存储
+
             checkAccount(result);
         }
 
@@ -175,33 +114,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     };
 
-    //检查账号是否正确，正确的话跳转，并保存信息
+    //判断账号密码是否正确 若正确则存储下来，下次直接跳转到主界面
     private void checkAccount(String result) {
         if (!result.contains("Wrong account or password")) {
-//            //解析为profileList存储，保存通过账号密码申请到的信息
-////            Gson gson = new Gson();
-////            ProfileList profileList = gson.fromJson(result,ProfileList.class);
 
-
-//            JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
-//            JsonElement element = jsonObject.get("login");
-//
-//            Gson gson = new Gson();
-//            ProfileList bean = gson.fromJson(element, ProfileList.class);
-//
-//            BaseApplication.getApplication().setProfileList(bean);
             Gson gson = new Gson();
-//            ProfileList list = gson.fromJson(result, ProfileList.class);
-//            Log.e("TAGTAGTAG",list.getCardId()+"  "+list.getName());
 
-            LoginBean bean = gson.fromJson(result,LoginBean.class);
-            Log.e("TAGTAG",bean.getSchoolId()+"  "+bean.getCardId());
+            ProfileList profileList = gson.fromJson(result, ProfileList.class);
+            Log.e("TAGTAG", profileList.getSchoolId() + "  " + profileList.getName());
+
 
             SharedPreferences sp = getSharedPreferences("account", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.clear();
-            editor.putString("usr", null);
-            editor.putString("psd", null);
+            editor.putString("usr", etUsername.getText().toString());
+            editor.putString("psd", etPassword.getText().toString());
             editor.apply();
 
             runOnUiThread(new Runnable() {
@@ -219,7 +146,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
-
                 }
             });
 

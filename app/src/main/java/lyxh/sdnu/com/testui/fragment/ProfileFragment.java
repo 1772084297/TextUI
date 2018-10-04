@@ -2,6 +2,7 @@ package lyxh.sdnu.com.testui.fragment;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -44,6 +45,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ProfileFragment extends Fragment {
     public static ProfileFragment fragment;
@@ -116,8 +119,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(int position) {
                 switch (position){
                     case 0:
-                        //todo 跳转一卡通充值
-                        //                使用支付宝充值
+                        //使用支付宝充值
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -131,21 +133,24 @@ public class ProfileFragment extends Fragment {
                         }).start();
                         break;
                     case 1:
-                        //todo 跳转拨打校医院
+                        //拨打校医院电话
                         call("tel:"+89610120);
                         break;
                     case 2:
-                        //todo 跳转一键报警
+                        //拨打报警电话
                         call("tel:"+86181110);
                         break;
                     case 3:
-                        //todo 登出
+                        //退出登陆 并删除账号数据
+                        SharedPreferences sp = getActivity().getSharedPreferences("account",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.clear();
+                        editor.apply();
+
                         Intent intent=new Intent(getActivity(), LoginActivity.class);
                         startActivity(intent);
                         MainActivity.instance.finish();
                         break;
-                        default:
-                            break;
                 }
             }
         });
@@ -158,7 +163,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-
+    // TODO: 2018/9/27 上传头像
     private void updateAvatar(final String url) {
         //..................................................................................................
         Log.e("上传头像",url);

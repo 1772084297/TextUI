@@ -4,6 +4,7 @@ import java.util.List;
 
 import lyxh.sdnu.com.testui.Data.AchievementInfo;
 
+//全局变量 用来存储必要的信息 如登陆后主页面中的数据
 public class ProfileList {
     public static final int VIEW_CARD_SOLUTION=0;
     public static final int VIEW_SEX=1;
@@ -23,19 +24,21 @@ public class ProfileList {
     private int status;
     private int SexProportionNum;//性别比例
     //个人信息
-    private String name;
-    private String avaUrl;
-    private String schoolId;
-    private String cardId;
-    private int balance;
-    private int transitionBalance;
-    private int cardStatus;
+    private String Name;
+    private String AvaUrl;
+    private String SchoolId;
+    private String CardId;
+    private String Balance;
+    private String TransitionBalance;
+    private String CardStatus;
+
+
     //学霸
     private String straightName;
     private String straightAvaUrl;
     //数量（班级）
-    private int numStu;
-    private int statusNum=NUM_CLASS;
+    private String NumStu;
+    private String StatusNum;
     //成绩
     private List<AchievementInfo> achievementInfoList;
     //网址
@@ -49,95 +52,49 @@ public class ProfileList {
         this.achievementInfoList = achievementInfoList;
     }
 
-    public int getNumStu() {
-        return numStu;
+    public String getName() {
+        return Name;
     }
 
-    public void setNumStu(int numStu) {
-        this.numStu = numStu;
+    public String getAvaUrl() {
+        return AvaUrl;
     }
 
-    public int getStatusNum() {
-        return statusNum;
+    public String getSchoolId() {
+        return SchoolId;
     }
 
-    public void setStatusNum(int statusNum) {
-        this.statusNum = statusNum;
+    public String getCardId() {
+        return CardId;
+    }
+
+    public String getBalance() {
+        return Balance;
+    }
+
+    public String getTransitionBalance() {
+        return TransitionBalance;
+    }
+
+    public String getCardStatus() {
+        return CardStatus;
     }
 
     public String getStraightName() {
         return straightName;
     }
 
-    public void setStraightName(String straightName) {
-        this.straightName = straightName;
-    }
-
     public String getStraightAvaUrl() {
         return straightAvaUrl;
     }
 
-    public void setStraightAvaUrl(String straightAvaUrl) {
-        this.straightAvaUrl = straightAvaUrl;
+    public String getNumStu() {
+        return NumStu;
     }
 
-    public String getName() {
-        return name;
+    public String getStatusNum() {
+        return StatusNum;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAvaUrl() {
-        return avaUrl;
-    }
-
-    public void setAvaUrl(String avaUrl) {
-        this.avaUrl = avaUrl;
-    }
-
-    public String getSchoolId() {
-        return schoolId;
-    }
-
-    public void setSchoolId(String schoolId) {
-        this.schoolId = schoolId;
-    }
-
-    public String getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(String cardId) {
-        this.cardId = cardId;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public int getTransitionBalance() {
-        return transitionBalance;
-    }
-
-    public void setTransitionBalance(int transitionBalance) {
-        this.transitionBalance = transitionBalance;
-    }
-
-    public int getCardStatus() {
-        return cardStatus;
-    }
-
-    public void setCardStatus(int cardStatus) {
-        this.cardStatus = cardStatus;
-    }
-
-
 
     public ProfileList(int status){
         this.status=status;

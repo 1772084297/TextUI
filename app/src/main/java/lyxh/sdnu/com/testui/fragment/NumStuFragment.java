@@ -8,6 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -45,14 +48,29 @@ public class NumStuFragment extends Fragment {
     private List<String> xAxisValue;
     private List<Float> yAxisValue;
     private List<Float> yAxisValue1;
+    private ImageView img_right;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_num_stu, container, false);
-        barChart = view.findViewById(R.id.hriBarChart);
+        initView(view);
         initData();
         return view;
+    }
+
+    private void initView(View view) {
+        barChart = view.findViewById(R.id.hriBarChart);
+        img_right = view.findViewById(R.id.arrow);
+
+        AnimationSet animationSet = (AnimationSet) AnimationUtils.loadAnimation(getContext(), R.anim.arrow_right);
+        img_right.setAnimation(animationSet);
+        img_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                img_right.setVisibility(View.GONE);
+            }
+        });
     }
 
     public void initData() {
@@ -77,27 +95,38 @@ public class NumStuFragment extends Fragment {
     };
 
     private void parseData(String result) {
-
-        result = "{\"classnum\":"+"[{\"ClassName\":\"计算机1601\",\"Mannum\":30,\"Womannum\":22},{\"ClassName\":\"计算机1602\",\"Mannum\":31,\"Womannum\":21},{\"ClassName\":\"计算机1603\",\"Mannum\":31,\"Womannum\":21},{\"ClassName\":\"计算机1604\",\"Mannum\":31,\"Womannum\":22},{\"ClassName\":\"计算机1605\",\"Mannum\":31,\"Womannum\":22},{\"ClassName\":\"通信1601\",\"Mannum\":20,\"Womannum\":28},{\"ClassName\":\"通信1602\",\"Mannum\":20,\"Womannum\":29},{\"ClassName\":\"通信1603\",\"Mannum\":20,\"Womannum\":29},{\"ClassName\":\"物联网1601\",\"Mannum\":13,\"Womannum\":37},{\"ClassName\":\"计师本1601\",\"Mannum\":17,\"Womannum\":33}]"+"}";
-
-        JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
-        JsonArray jsonArray = jsonObject.getAsJsonArray("classnum");
+//
+//        JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+//        JsonArray jsonArray = jsonObject.getAsJsonArray("classnum");
+//        Gson gson = new Gson();
+//        List<GsonStuNum> jsonlist = new ArrayList<>();
+//        for (JsonElement element : jsonArray) {
+//            GsonStuNum data = gson.fromJson(element, new TypeToken<GsonStuNum>() {
+//            }.getType());
+//            jsonlist.add(data);
+//        }
+//        for (int i = 0; i < jsonlist.size(); i++) {
+//            xAxisValue.add(jsonlist.get(i).getClassName());
+//            yAxisValue.add(Float.valueOf(jsonlist.get(i).getMannum()));
+//            yAxisValue1.add(Float.valueOf(jsonlist.get(i).getWomannum()));
+//        }
+//        getActivity().runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                setTwoBarChart(barChart, xAxisValue, yAxisValue, yAxisValue1, "男生", "女生");
+//            }
+//        });
         Gson gson = new Gson();
-        List<GsonStuNum> jsonlist = new ArrayList<>();
-        for (JsonElement element : jsonArray) {
-            GsonStuNum data = gson.fromJson(element, new TypeToken<GsonStuNum>() {
-            }.getType());
-            jsonlist.add(data);
-        }
-        for (int i = 0; i < jsonlist.size(); i++) {
-            xAxisValue.add(jsonlist.get(i).getClassName());
-            yAxisValue.add(Float.valueOf(jsonlist.get(i).getMannum()));
-            yAxisValue1.add(Float.valueOf(jsonlist.get(i).getWomannum()));
+        List<GsonStuNum> jsonList = gson.fromJson(result,new TypeToken<List<GsonStuNum>>(){}.getType());
+        for (int i = 0; i < jsonList.size(); i++) {
+            xAxisValue.add(jsonList.get(i).getClassName());
+            yAxisValue.add(Float.valueOf(jsonList.get(i).getMannum()));
+            yAxisValue1.add(Float.valueOf(jsonList.get(i).getWomannum()));
         }
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                setTwoBarChart(barChart, xAxisValue, yAxisValue, yAxisValue1, "男生", "女生");
+                setTwoBarChart(barChart,xAxisValue,yAxisValue,yAxisValue1,"男生","女生");
             }
         });
     }

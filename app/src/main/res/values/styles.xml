@@ -9,6 +9,10 @@
     </style>
 
 
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/layer_splash</item>
+    </style>
+
 
     <!--炫酷的卡片展示-->
     <style name="SportCardStyle.SportTile">
