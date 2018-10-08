@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#fff</color>
+    <color name="colorAccent">#ff8197</color>
 
     <color name="newsbg">#02548e</color>
     <color name="perbg">#33b5e6</color>
+    <color name="mainbg">#8000</color>
+
     <color name="numColor">#afafaf</color>
     <color name="pink">#ff8197</color>
     <color name="blue">#85caf0</color>

@@ -90,7 +90,8 @@ public class SplashActivity extends BaseActivity {
 
         @Override
         public void onFailure(int code) {
-            Toast.makeText(SplashActivity.this, "网络连接异常", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SplashActivity.this,MainActivity.class));
+            finish();
         }
     };
 }

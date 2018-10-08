@@ -1,6 +1,5 @@
 package lyxh.sdnu.com.testui.fragment;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -40,11 +39,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
+
         bindViews(view);
         initData();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.cardBac));
-        }
         setClick();
         setActionBar();
         setRecyclerView();
@@ -52,7 +49,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void setClick() {
-
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -67,6 +63,7 @@ public class HomeFragment extends Fragment {
         MainActivity.instance.setSupportActionBar(toolbar);
     }
 
+    // TODO: 2018/10/4 initData需要从ProfileList中获取
     private void initData() {
         lists=new ArrayList<>();
         lists.add(new ProfileList(0));

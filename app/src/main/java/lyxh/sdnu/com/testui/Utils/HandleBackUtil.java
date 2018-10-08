@@ -1,4 +1,4 @@
-package lyxh.sdnu.com.testui.Adapter;
+package lyxh.sdnu.com.testui.Utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

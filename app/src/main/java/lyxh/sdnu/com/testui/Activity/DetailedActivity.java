@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.githang.statusbar.StatusBarCompat;
+
 import lyxh.sdnu.com.testui.fragment.AchievementStuFragment;
 import lyxh.sdnu.com.testui.fragment.CardSolutionFragment;
 import lyxh.sdnu.com.testui.Data.ProfileList;
@@ -29,7 +31,7 @@ public class DetailedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.mainbg));
         initViews();
         setFragment();
         setClick();

@@ -24,7 +24,7 @@
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_a1"
+                android:src="@drawable/ic_class"
                 android:layout_marginRight="10dp"/>
             <TextView
                 android:layout_width="0dp"

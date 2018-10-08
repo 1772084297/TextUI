@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import lyxh.sdnu.com.testui.BaseApplication;
 import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 import lyxh.sdnu.com.testui.Utils.NetClient;
@@ -94,8 +95,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     break;
                 }
                 //登陆请求
-                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id="+
-                        etUsername.getText()+"&password="+etPassword.getText(), callback);
+                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=" +
+                        etUsername.getText() + "&password=" + etPassword.getText(), callback);
                 break;
         }
     }
@@ -104,7 +105,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private NetClient.MyCallBack callback = new NetClient.MyCallBack() {
         @Override
         public void onSuccess(String result) {
-
             checkAccount(result);
         }
 
@@ -116,13 +116,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //判断账号密码是否正确 若正确则存储下来，下次直接跳转到主界面
     private void checkAccount(String result) {
+        Log.e("TAGTAG", result);
         if (!result.contains("Wrong account or password")) {
 
             Gson gson = new Gson();
 
             ProfileList profileList = gson.fromJson(result, ProfileList.class);
-            Log.e("TAGTAG", profileList.getSchoolId() + "  " + profileList.getName());
-
+            BaseApplication.getApplication().setProfileList(profileList);
 
             SharedPreferences sp = getSharedPreferences("account", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
@@ -134,18 +134,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        Explode explode = new Explode();
-                        explode.setDuration(500);
-
-                        getWindow().setExitTransition(explode);
-                        getWindow().setEnterTransition(explode);
-                        ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this);
-                        Intent i2 = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(i2, oc2.toBundle());
-                    } else {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                 }
             });
 

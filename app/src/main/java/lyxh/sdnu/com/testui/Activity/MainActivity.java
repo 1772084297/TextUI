@@ -1,28 +1,20 @@
 package lyxh.sdnu.com.testui.Activity;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.graphics.ColorUtils;
-import android.transition.Explode;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.githang.statusbar.StatusBarCompat;
 
 import java.util.ArrayList;
 
+import lyxh.sdnu.com.testui.R;
 import lyxh.sdnu.com.testui.fragment.HomeFragment;
 import lyxh.sdnu.com.testui.fragment.NewsFragment;
 import lyxh.sdnu.com.testui.fragment.ProfileFragment;
-import lyxh.sdnu.com.testui.R;
 
 //https://blog.csdn.net/lin_dianwei/article/details/78914046 优雅的返回
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
@@ -35,17 +27,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.mainbg));
         bindViews();
         createBottomBar();
-
-        //炫酷的登陆动
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Explode explode = new Explode();
-            explode.setDuration(500);
-            getWindow().setExitTransition(explode);
-            getWindow().setEnterTransition(explode);
-        }
     }
+
 
     private void createBottomBar() {
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);//mode为非固定
@@ -79,6 +65,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     private void bindViews() {
         instance = this;
+
+
         fragments = new ArrayList<>();
         bottomNavigationBar = findViewById(R.id.main_bottom_navigation_bar);
     }
@@ -114,6 +102,20 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 ft.show(fragment);
             }
         }
+        switch (position) {
+            case 0:
+                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.mainbg));
+                break;
+            case 1:
+                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.newsbg));
+                break;
+            case 2:
+                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.perbg));
+                break;
+            default:
+                break;
+
+        }
     }
 
     @Override
@@ -141,6 +143,5 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-
 
 }

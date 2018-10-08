@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import lyxh.sdnu.com.testui.Activity.DetailedActivity;
 import lyxh.sdnu.com.testui.Activity.MainActivity;
+import lyxh.sdnu.com.testui.BaseApplication;
 import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 import lyxh.sdnu.com.testui.Utils.ImgUtils;
@@ -29,6 +30,7 @@ public class CardSolutionView extends LinearLayout {
     private TextView balance;
     private TextView transitionBalance;
     private ImageView cardStatus;
+    private TextView name;
 
     public CardSolutionView(Context context) {
         super(context);
@@ -46,10 +48,23 @@ public class CardSolutionView extends LinearLayout {
     }
 
     private void init() {
-        LayoutInflater.from(getContext()).inflate(R.layout.view_card_solution, this
-                , true);
+        LayoutInflater.from(getContext()).inflate(R.layout.view_card_solution, this, true);
         initViews();
         setClick();
+        initData();
+    }
+
+    private void initData() {
+        ProfileList profileList= BaseApplication.getApplication().getProfileList();
+        if (profileList!=null){
+//            ImgUtils.loadRound(getContext(),profileList.getAvaUrl(),imageAva);
+            schoolId.setText(profileList.getSchoolId());
+            cardId.setText(profileList.getCardId());
+            balance.setText(profileList.getBalance());
+            transitionBalance.setText(profileList.getTransitionBalance());
+            cardStatus.setVisibility(profileList.getStatus());
+            name.setText(profileList.getName());
+        }
     }
 
     private void setClick() {
@@ -76,6 +91,7 @@ public class CardSolutionView extends LinearLayout {
         balance = findViewById(R.id.view_card_balance);
         transitionBalance = findViewById(R.id.view_card_transition_balance);
         cardStatus = findViewById(R.id.view_card_status);
+        name=findViewById(R.id.view_card_school_name);
 
         innerCard.setCardBackgroundColor(getResources().getColor(R.color.bac));
         outerCard.setCardBackgroundColor(getResources().getColor(R.color.cardBac));

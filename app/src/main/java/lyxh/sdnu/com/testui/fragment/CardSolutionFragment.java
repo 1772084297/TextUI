@@ -6,9 +6,11 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -77,11 +79,11 @@ public class CardSolutionFragment extends Fragment {
         barYValues3 = new ArrayList<>();
         pieValues = new HashMap<>();
 
-
         startRequest();
 
 
     }
+
 
     //    https://blog.csdn.net/coderinchina/article/details/50899391
     private void startRequest() {
@@ -129,6 +131,7 @@ public class CardSolutionFragment extends Fragment {
                 barYValues3.add(8.2f);barYValues3.add(7f);barYValues3.add(6.5f);
 
                 setThreeBarChart(barChart, barXValues, barYValues1, barYValues2, barYValues3, "早餐", "午餐", "晚餐");
+
                 pieValues.put("早餐", 3f);
                 pieValues.put("午餐", 7.5f);
                 pieValues.put("晚餐", 10f);
@@ -150,7 +153,7 @@ public class CardSolutionFragment extends Fragment {
 
         @Override
         public void onFailure(int code) {
-
+            Log.e("TAGTAG",code+"");
         }
     };
 

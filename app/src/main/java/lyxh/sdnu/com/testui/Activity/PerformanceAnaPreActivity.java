@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.githang.statusbar.StatusBarCompat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +43,13 @@ public class PerformanceAnaPreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_performance_ana_pre);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.mainbg));
         bindViews();
         setClick();
         initData();
         initViews();
     }
+
 
     private void initViews() {
         //todo 需要有一定的逻辑进行判断学生是否能够毕业
@@ -143,6 +147,5 @@ public class PerformanceAnaPreActivity extends AppCompatActivity {
         outer=findViewById(R.id.activity_performance_outer_cardView);
         inner=findViewById(R.id.activity_performance_inner_cardView);
 
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }
