@@ -8,10 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -26,6 +23,7 @@ import lyxh.sdnu.com.testui.BaseApplication;
 import lyxh.sdnu.com.testui.Data.ProfileList;
 import lyxh.sdnu.com.testui.R;
 import lyxh.sdnu.com.testui.Utils.NetClient;
+import lyxh.sdnu.com.testui.Utils.Utils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static LoginActivity instance;
@@ -94,9 +92,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_LONG).show();
                     break;
                 }
-                //登陆请求
-                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=" +
-                        etUsername.getText() + "&password=" + etPassword.getText(), callback);
+
+                if (Utils.isNetworkConnected(this)) {
+                    //登陆请求
+                    NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=" +
+                            etUsername.getText() + "&password=" + etPassword.getText(), callback);
+                    Toast.makeText(this,"正在登陆中",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this,"无网络连接", Toast.LENGTH_LONG).show();
+                }
+
                 break;
         }
     }

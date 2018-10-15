@@ -1,19 +1,23 @@
 package lyxh.sdnu.com.testui.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.WindowManager;
-import android.widget.Toast;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.tencent.smtt.sdk.QbSdk;
 
 import lyxh.sdnu.com.testui.BaseApplication;
 import lyxh.sdnu.com.testui.Data.ProfileList;
-import lyxh.sdnu.com.testui.Utils.NetClient;
 import lyxh.sdnu.com.testui.R;
+import lyxh.sdnu.com.testui.Utils.NetClient;
+import lyxh.sdnu.com.testui.Utils.Utils;
 
 public class SplashActivity extends BaseActivity {
 
@@ -30,8 +34,8 @@ public class SplashActivity extends BaseActivity {
         final String username = sharedPreferences.getString("usr", "");
         final String password = sharedPreferences.getString("psd", "");
         Log.e("TAGTAG", username + " " + password);
+
         if (username.equals("") || username.length() == 0) {
-            Log.e("TAGTAG","没有登陆信息");
             //本地没有账号数据时 调转到登陆界面
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -43,22 +47,27 @@ public class SplashActivity extends BaseActivity {
             }, 1500);
 
         } else {
-            //有账号数据时请求结束后跳转到主界面
-            Log.e("TAGTAG","有登陆信息");
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    //在这里执行耗时操作 获取数据等
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=" +
-                                    username + "&password=" + password, callBack);
-                        }
-                    });
-                }
-            }).start();
-
+            if (Utils.isNetworkConnected(this)) {
+                //有账号数据时请求结束后跳转到主界面
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //在这里执行耗时操作 获取数据等
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                NetClient.getInstance().startRequest("http://148.70.111.56:8055/api/login?id=" +
+                                        username + "&password=" + password, callBack);
+                            }
+                        });
+                    }
+                }).start();
+            } else {
+                //无网络连接跳转到登陆界面
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 
@@ -77,20 +86,15 @@ public class SplashActivity extends BaseActivity {
                 finish();
             } else {
                 //账号密码错误
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, 1000);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         }
 
         @Override
         public void onFailure(int code) {
-            startActivity(new Intent(SplashActivity.this,MainActivity.class));
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }
     };

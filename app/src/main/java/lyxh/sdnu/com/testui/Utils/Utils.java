@@ -1,5 +1,9 @@
 package lyxh.sdnu.com.testui.Utils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import java.text.NumberFormat;
 
 public class Utils {
@@ -48,16 +52,28 @@ public class Utils {
      * 将double转为数值，并最多保留num位小数。
      *
      * @param d
-     * @param num 小数个数
+     * @param num      小数个数
      * @param defValue 默认值。当d为null时，返回该值。
      * @return
      */
-    public static String double2String(Double d, int num, String defValue){
-        if(d==null){
+    public static String double2String(Double d, int num, String defValue) {
+        if (d == null) {
             return defValue;
         }
 
-        return double2String(d,num);
+        return double2String(d, num);
+    }
+
+    public static boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            if (mNetworkInfo != null) {
+                return mNetworkInfo.isAvailable();
+            }
+        }
+        return false;
     }
 }
 

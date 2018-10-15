@@ -26,7 +26,8 @@ import lyxh.sdnu.com.testui.Utils.ImgUtils;
 public class PerformanceAnaPreActivity extends AppCompatActivity {
     private ImageView back;
     private ImageView status;
-    private ImageView semesterStatus;
+    //    private ImageView semesterStatus;
+    private TextView semesterStatus;
     private TextView currentPer;
     private TextView currentTotalPer;
     private TextView needTotalPer;
@@ -53,40 +54,13 @@ public class PerformanceAnaPreActivity extends AppCompatActivity {
 
     private void initViews() {
         //todo 需要有一定的逻辑进行判断学生是否能够毕业
-        ImgUtils.load(getApplicationContext(),R.drawable.ic_normal,status);
-        currentPer.setText(performance.getCurrentPer()+"");
-        currentTotalPer.setText(performance.getCurrentTotalPer()+"");
-        needTotalPer.setText(performance.getNeedTotalPer()+"");
-        disparityPer.setText(performance.getDisparityPer()+"");
-        switch (performance.getSemestersPer().size()){
-            case 0:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a1,semesterStatus);
-                break;
-            case 1:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a2,semesterStatus);
-                break;
-            case 2:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a3,semesterStatus);
-                break;
-            case 3:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a4,semesterStatus);
-                break;
-            case 4:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a5,semesterStatus);
-                break;
-            case 5:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a6,semesterStatus);
-                break;
-            case 6:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a7,semesterStatus);
-                break;
-            case 7:
-                ImgUtils.load(getApplicationContext(),R.drawable.ic_a8,semesterStatus);
-                break;
-            default:
-                break;
-        }
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL));
+        ImgUtils.load(getApplicationContext(), R.drawable.ic_normal, status);
+        currentPer.setText(performance.getCurrentPer() + "");
+        currentTotalPer.setText(performance.getCurrentTotalPer() + "");
+        needTotalPer.setText(performance.getNeedTotalPer() + "");
+        disparityPer.setText(performance.getDisparityPer() + "");
+        semesterStatus.setText((performance.getSemestersPer().size()+1)+"");
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(performanceAdapter);
         inner.setCardBackgroundColor(getResources().getColor(R.color.bac));
     }
@@ -123,7 +97,7 @@ public class PerformanceAnaPreActivity extends AppCompatActivity {
         lists.add(new SemesterPer(30, 30));
         lists.add(new SemesterPer(33, 31));
         performance.setSemestersPer(lists);
-        performanceAdapter=new PerformanceAdapter(getApplicationContext(),performance.getSemestersPer());
+        performanceAdapter = new PerformanceAdapter(getApplicationContext(), performance.getSemestersPer());
     }
 
     private void setClick() {
@@ -136,16 +110,16 @@ public class PerformanceAnaPreActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-        back=findViewById(R.id.activity_performance_back);
-        status=findViewById(R.id.activity_performance_status);
+        back = findViewById(R.id.activity_performance_back);
+        status = findViewById(R.id.activity_performance_status);
         semesterStatus=findViewById(R.id.activity_performance_semester);
-        currentPer=findViewById(R.id.activity_performance_current_num);
-        currentTotalPer=findViewById(R.id.activity_performance_total_current);
-        needTotalPer=findViewById(R.id.activity_performance_total_need);
-        disparityPer=findViewById(R.id.activity_performance_disparity_num);
-        recyclerView=findViewById(R.id.activity_performance_rec);
-        outer=findViewById(R.id.activity_performance_outer_cardView);
-        inner=findViewById(R.id.activity_performance_inner_cardView);
+        currentPer = findViewById(R.id.activity_performance_current_num);
+        currentTotalPer = findViewById(R.id.activity_performance_total_current);
+        needTotalPer = findViewById(R.id.activity_performance_total_need);
+        disparityPer = findViewById(R.id.activity_performance_disparity_num);
+        recyclerView = findViewById(R.id.activity_performance_rec);
+        outer = findViewById(R.id.activity_performance_outer_cardView);
+        inner = findViewById(R.id.activity_performance_inner_cardView);
 
     }
 }
